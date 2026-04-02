@@ -106,7 +106,7 @@ popup.innerHTML = `
     <div class="word-main" id="nd-word"></div>
     <div class="word-meaning" id="nd-meaning"></div>
     <div class="word-example" id="nd-example"></div>
-    <button class="add-anki-btn" id="nd-anki-btn">+ Add to Anki</button>
+    <button class="add-anki-btn" id="nd-anki-btn">+ Anki에 추가</button>
 `;
 shadowRoot.appendChild(popup);
 document.documentElement.appendChild(container);
@@ -136,7 +136,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                 showPopup(lastContextX, lastContextY, response.data);
             } else {
                 hidePopup();
-                console.warn("Naver Dictionary: No definition found.");
+                console.warn("네이버 사전: 검색 결과를 찾을 수 없습니다.");
             }
         });
     }
@@ -159,7 +159,7 @@ function showPopup(x, y, data) {
     }
     
     const btn = shadowRoot.getElementById('nd-anki-btn');
-    btn.textContent = "+ Add to Anki";
+    btn.textContent = "+ Anki에 추가";
     btn.className = "add-anki-btn";
     
     popup.classList.add('visible');
@@ -203,20 +203,20 @@ shadowRoot.getElementById('nd-anki-btn').addEventListener('click', (e) => {
     if (!currentData) return;
     
     const btn = e.target;
-    btn.textContent = "Adding...";
+    btn.textContent = "추가 중...";
     
     chrome.runtime.sendMessage({ type: "ADD_TO_ANKI", data: currentData }, (response) => {
         if (chrome.runtime.lastError) {
-             btn.textContent = "Error";
+             btn.textContent = "오류";
              btn.className = "add-anki-btn error";
              return;
         }
 
         if (response && response.success) {
-            btn.textContent = "Added!";
+            btn.textContent = "추가 완료!";
             btn.className = "add-anki-btn success";
         } else {
-            btn.textContent = "Error: " + (response ? response.error : 'Unknown');
+            btn.textContent = "오류: " + (response ? response.error : '알 수 없는 오류');
             btn.className = "add-anki-btn error";
         }
         

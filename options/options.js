@@ -17,7 +17,7 @@ async function fetchModelFields() {
                 const selectElement = document.getElementById(id);
                 const currentValue = selectElement.value; 
                 
-                selectElement.innerHTML = '<option value="">-- None --</option>';
+                selectElement.innerHTML = '<option value="">-- 없음 --</option>';
                 
                 fields.forEach(field => {
                     const opt = document.createElement('option');
@@ -80,22 +80,24 @@ async function fetchAnkiData() {
         await fetchModelFields();
     } catch (e) {
         console.error("Failed to load from Anki:", e);
-        alert("Failed to load Decks/Models from Anki. Make sure Anki and AnkiConnect are running.");
+        alert("Anki에서 덱 또는 모델을 불러오는 데 실패했습니다. Anki와 AnkiConnect가 실행 중인지 확인하세요.");
     }
 }
 
 // Load saved settings
 document.addEventListener('DOMContentLoaded', () => {
     chrome.storage.sync.get({
+        dictLanguage: 'ja',
         ankiUrl: 'http://127.0.0.1:8765',
         deckName: 'Default',
         modelName: 'Basic',
-        fieldWord: 'Front',
-        fieldReading: '',
-        fieldMeaning: 'Back',
-        fieldAudio: '',
-        fieldExample: ''
+        fieldWord: 'Expression',
+        fieldReading: 'ExpressionFurigana',
+        fieldMeaning: 'MainDefinition',
+        fieldAudio: 'ExpressionAudio',
+        fieldExample: 'Sentence'
     }, (items) => {
+        document.getElementById('dictLanguage').value = items.dictLanguage;
         document.getElementById('ankiUrl').value = items.ankiUrl;
         
         // Add current saved options so they display immediately before fetch completes
@@ -118,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
             selectElement.innerHTML = '';
             const opt = document.createElement('option');
             opt.value = val;
-            opt.textContent = val ? val : '-- None --';
+            opt.textContent = val ? val : '-- 없음 --';
             selectElement.appendChild(opt);
             selectElement.value = val;
         });
@@ -137,6 +139,7 @@ document.getElementById('fetchAnkiBtn').addEventListener('click', () => {
 
 // Save settings
 document.getElementById('saveBtn').addEventListener('click', () => {
+    const dictLanguage = document.getElementById('dictLanguage').value;
     const ankiUrl = document.getElementById('ankiUrl').value;
     const deckName = document.getElementById('deckName').value;
     const modelName = document.getElementById('modelName').value;
@@ -147,6 +150,7 @@ document.getElementById('saveBtn').addEventListener('click', () => {
     const fieldExample = document.getElementById('fieldExample').value;
 
     chrome.storage.sync.set({
+        dictLanguage,
         ankiUrl,
         deckName,
         modelName,

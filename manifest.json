@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Anki Miner for Naver Dictionary",
-  "version": "0.1.2",
-  "description": "네이버 사전의 검색 결과를 원클릭으로 Anki 덱에 저장해줍니다.",
+  "version": "0.2.1",
+  "description": "네이버 사전(일본어, 영어, 중국어, 프랑스어)의 검색 결과를 원클릭으로 Anki 덱에 저장합니다.",
   "permissions": ["storage", "activeTab", "scripting", "contextMenus"],
   "host_permissions": [
     "*://*.naver.com/*",

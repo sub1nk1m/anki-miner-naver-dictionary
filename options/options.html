@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Naver Dictionary (Anki) Options</title>
+    <title>네이버 사전 (Anki) 설정</title>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; padding: 20px; max-width: 600px; margin: 0 auto; line-height: 1.6; }
         .group { margin-bottom: 20px; }
@@ -17,60 +17,71 @@
     </style>
 </head>
 <body>
-    <h1>Extension Settings</h1>
+    <h1>확장 프로그램 환경설정</h1>
     
     <div class="group">
-        <label for="ankiUrl">AnkiConnect URL</label>
-        <input type="text" id="ankiUrl" value="http://127.0.0.1:8765">
-        <button id="fetchAnkiBtn" class="fetch-btn">↻ Load Decks & Models</button>
-        <small style="display:block;margin-top:5px;">Make sure Anki and AnkiConnect are running.</small>
+        <label for="dictLanguage">대상 사전 언어</label>
+        <select id="dictLanguage">
+            <option value="ja">일본어 (네이버 일본어사전)</option>
+            <option value="en">영어 (네이버 영어사전)</option>
+            <option value="zh">중국어 (네이버 중국어사전)</option>
+            <option value="fr">프랑스어 (네이버 프랑스어사전)</option>
+        </select>
     </div>
 
     <div class="group">
-        <label for="deckName">Target Anki Deck Name</label>
+        <label for="ankiUrl">AnkiConnect 주소</label>
+        <input type="text" id="ankiUrl" value="http://127.0.0.1:8765">
+        <button id="fetchAnkiBtn" class="fetch-btn">↻ 덱 및 모델 불러오기</button>
+        <small style="display:block;margin-top:5px;">Anki 프로그램과 AnkiConnect 애드온이 실행 중인지 확인하세요.</small>
+    </div>
+
+    <div class="group">
+        <label for="deckName">저장할 Anki 덱 검색</label>
         <select id="deckName">
             <option value="Default">Default</option>
         </select>
     </div>
 
     <div class="group">
-        <label for="modelName">Target Note Type (Model Name)</label>
+        <label for="modelName">대상 노트 타입 (모델 명)</label>
         <select id="modelName">
             <option value="Basic">Basic</option>
         </select>
     </div>
 
     <hr>
-    <h3>Field Mapping</h3>
-    <small>Select the exact field names from your Anki Note Type.</small>
+    <hr>
+    <h3>필드 매핑</h3>
+    <small>Anki 노트 타입과 정확히 일치하는 필드 이름을 선택하세요.</small>
 
     <div class="group">
-        <label for="fieldWord">Word Field (e.g. Front, Expression)</label>
-        <select id="fieldWord"><option value="">-- Loading --</option></select>
+        <label for="fieldWord">단어 필드 (예: Front, Expression)</label>
+        <select id="fieldWord"><option value="">-- 불러오는 중 --</option></select>
     </div>
 
     <div class="group">
-        <label for="fieldReading">Reading Field (e.g. Reading, Furigana - optional)</label>
-        <select id="fieldReading"><option value="">-- Loading --</option></select>
+        <label for="fieldReading">발음/요미가나 필드 (예: Reading - 선택 사항)</label>
+        <select id="fieldReading"><option value="">-- 불러오는 중 --</option></select>
     </div>
 
     <div class="group">
-        <label for="fieldMeaning">Meaning Field (e.g. Back, Meaning)</label>
-        <select id="fieldMeaning"><option value="">-- Loading --</option></select>
+        <label for="fieldMeaning">뜻 필드 (예: Back, Meaning)</label>
+        <select id="fieldMeaning"><option value="">-- 불러오는 중 --</option></select>
     </div>
 
     <div class="group">
-        <label for="fieldAudio">Audio Field (e.g. Audio - optional)</label>
-        <select id="fieldAudio"><option value="">-- Loading --</option></select>
+        <label for="fieldAudio">오디오 필드 (예: Audio - 선택 사항)</label>
+        <select id="fieldAudio"><option value="">-- 불러오는 중 --</option></select>
     </div>
 
     <div class="group">
-        <label for="fieldExample">Example Sentence Field (e.g. Example - optional)</label>
-        <select id="fieldExample"><option value="">-- Loading --</option></select>
+        <label for="fieldExample">예문 필드 (예: Example - 선택 사항)</label>
+        <select id="fieldExample"><option value="">-- 불러오는 중 --</option></select>
     </div>
 
-    <button id="saveBtn">Save Settings</button>
-    <div id="status">Settings saved successfully.</div>
+    <button id="saveBtn">설정 저장</button>
+    <div id="status">설정이 성공적으로 저장되었습니다.</div>
 
     <script src="options.js"></script>
 </body>
