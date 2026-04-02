@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Naver Dictionary (Anki) Options</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; padding: 20px; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+        .group { margin-bottom: 20px; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; }
+        input[type="text"] { width: 100%; padding: 8px; box-sizing: border-box; }
+        button { padding: 10px 15px; background: #00c73c; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        button:hover { background: #00b035; }
+        .fetch-btn { background: #2b78e4; padding: 6px 10px; font-size: 14px; margin-top: 5px; }
+        .fetch-btn:hover { background: #1c5ead; }
+        select { width: 100%; padding: 8px; box-sizing: border-box; }
+        #status { margin-top: 10px; color: #00c73c; display: none; }
+    </style>
+</head>
+<body>
+    <h1>Extension Settings</h1>
+    
+    <div class="group">
+        <label for="ankiUrl">AnkiConnect URL</label>
+        <input type="text" id="ankiUrl" value="http://127.0.0.1:8765">
+        <button id="fetchAnkiBtn" class="fetch-btn">↻ Load Decks & Models</button>
+        <small style="display:block;margin-top:5px;">Make sure Anki and AnkiConnect are running.</small>
+    </div>
+
+    <div class="group">
+        <label for="deckName">Target Anki Deck Name</label>
+        <select id="deckName">
+            <option value="Default">Default</option>
+        </select>
+    </div>
+
+    <div class="group">
+        <label for="modelName">Target Note Type (Model Name)</label>
+        <select id="modelName">
+            <option value="Basic">Basic</option>
+        </select>
+    </div>
+
+    <hr>
+    <h3>Field Mapping</h3>
+    <small>Select the exact field names from your Anki Note Type.</small>
+
+    <div class="group">
+        <label for="fieldWord">Word Field (e.g. Front, Expression)</label>
+        <select id="fieldWord"><option value="">-- Loading --</option></select>
+    </div>
+
+    <div class="group">
+        <label for="fieldReading">Reading Field (e.g. Reading, Furigana - optional)</label>
+        <select id="fieldReading"><option value="">-- Loading --</option></select>
+    </div>
+
+    <div class="group">
+        <label for="fieldMeaning">Meaning Field (e.g. Back, Meaning)</label>
+        <select id="fieldMeaning"><option value="">-- Loading --</option></select>
+    </div>
+
+    <div class="group">
+        <label for="fieldAudio">Audio Field (e.g. Audio - optional)</label>
+        <select id="fieldAudio"><option value="">-- Loading --</option></select>
+    </div>
+
+    <div class="group">
+        <label for="fieldExample">Example Sentence Field (e.g. Example - optional)</label>
+        <select id="fieldExample"><option value="">-- Loading --</option></select>
+    </div>
+
+    <button id="saveBtn">Save Settings</button>
+    <div id="status">Settings saved successfully.</div>
+
+    <script src="options.js"></script>
+</body>
+</html>
