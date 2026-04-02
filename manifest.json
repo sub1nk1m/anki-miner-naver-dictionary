@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Naver Japanese Dictionary (Anki)",
-  "version": "1.0.0",
-  "description": "Yomitan-style hover dictionary using Naver Japanese Dictionary with 1-click Anki export.",
+  "name": "Anki Miner for Naver Dictionary",
+  "version": "0.1.2",
+  "description": "네이버 사전의 검색 결과를 원클릭으로 Anki 덱에 저장해줍니다.",
   "permissions": ["storage", "activeTab", "scripting", "contextMenus"],
   "host_permissions": [
     "*://*.naver.com/*",
